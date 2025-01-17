@@ -1,12 +1,11 @@
-import { Categories } from '../widgets/Categories/Categories'
-import { Header } from '../widgets/Header/Header'
+import { HomePage } from '../pages/HomePage'
+
 import styles from './styles.module.scss'
 
 function App() {
   return (
     <div className={styles.appContainer}>
-      <Header />
-      <Categories />
+      <HomePage />
     </div>
   )
 }

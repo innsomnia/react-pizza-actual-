@@ -1,0 +1,20 @@
+.titleGroup {
+  h1 {
+    font-size: 24px;
+    font-weight: 900;
+  }
+  span {
+    font-size: 16px;
+    font-weight: 400px;
+    color: rgba(123, 123, 123, 1);
+  }
+
+  width: 220px;
+  height: 51px;
+  display: flex;
+  align-items: center;
+
+  img {
+    margin-right: 13px;
+  }
+}
