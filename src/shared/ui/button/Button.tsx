@@ -1,14 +1,22 @@
 import styles from './styles.module.scss'
 
-import loginImg from '/forHeader/loginMan.svg'
-// import cartImg from '/forHeader/btnCart.svg'
+interface typesOfButton {
+  text: string
+  loginImg?: string
+  cartImg?: string
+}
 
-export const Button = () => {
+export const Button = ({ ...props }: typesOfButton) => {
+  const loginImg = props.loginImg
+  const cartImg = props.cartImg
+  const text = props.text
+
   return (
     <div className={styles.btnGroup}>
       <button className={styles.login}>
-        <img src={loginImg} alt='картинки нет' />
-        <span>Войти</span>
+        {loginImg && <img src={loginImg} alt='loginIcon' />}
+        {cartImg && <img src={cartImg} alt='cartIcon' />}
+        {text && <span>{text}</span>}
       </button>
     </div>
   )
