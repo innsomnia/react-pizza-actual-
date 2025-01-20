@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
 
-export const Sort = () => {
+export const PizzaSort = () => {
   return (
     <div className={styles.sortBox}>
       <img src='/forSort.svg' alt='картинки нет' />

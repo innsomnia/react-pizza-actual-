@@ -1,13 +1,11 @@
-import { Header } from '../widgets/Header'
-import { MenuOfSort } from '../widgets/MenuOfSort'
-import { PizzasBlock } from '../widgets/PizzasBlock'
+import { BlockOfPizzas, Header, MenuOfSort } from '../widgets'
 
 export const HomePage = () => {
   return (
     <>
       <Header />
       <MenuOfSort />
-      <PizzasBlock />
+      <BlockOfPizzas />
     </>
   )
 }

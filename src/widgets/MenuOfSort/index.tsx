@@ -1,1 +1,0 @@
-export { MenuOfSort } from './MenuOfSort'

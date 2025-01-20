@@ -1,0 +1,46 @@
+.container {
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.listOfCategories {
+  display: flex;
+  list-style-type: none;
+  background-color: rgba(250, 250, 250, 1);
+  border-radius: 15px;
+  height: 55px;
+}
+
+.button {
+  background-color: rgba(250, 250, 250, 1);
+  padding: 11px 24px;
+  border: none;
+  border-radius: 15px;
+  margin: 6px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    color: rgba(254, 95, 0, 1);
+  }
+
+  img {
+    margin-left: 6px;
+  }
+}
+
+.active {
+  padding: 11px 24px;
+  border: none;
+  border-radius: 15px;
+  margin: 6px;
+  cursor: auto;
+  color: rgba(254, 95, 0, 1);
+  background-color: white;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+}

@@ -1,1 +1,0 @@
-export { PizzasBlock } from './PizzasBlock'

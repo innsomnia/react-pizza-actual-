@@ -6,12 +6,14 @@ interface typesOfButton {
 }
 
 export const ButtonSelect = ({ children }: typesOfButton) => {
-  const [isFocused, setIsFocused] = useState(false)
+  const [isFocused, setIsFocused] = useState(0)
 
-  const handleClick = () => setIsFocused((prev) => !prev)
+  const handleClick = (id: number) => {
+    setIsFocused(id)
+  }
 
   return (
-    <button className={`${styles.button} ${isFocused ? styles.focused : ''}`} onClick={handleClick}>
+    <button onClick={() => handleClick(0)} className={isFocused === 0 ? styles.focused : styles.button}>
       {children}
     </button>
   )
