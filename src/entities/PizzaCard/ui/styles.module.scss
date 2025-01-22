@@ -42,3 +42,35 @@
   line-height: 27px;
   letter-spacing: 0.015em;
 }
+
+.button {
+  list-style-type: none;
+  padding: 8px;
+  flex: 1;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.2s ease-in-out;
+  margin: 3px;
+
+  &:hover {
+    background: #ffffff;
+    box-shadow: 0px 2px 4px rgba(4, 4, 4, 0.18);
+    border-radius: 5px;
+    cursor: auto;
+  }
+}
+
+.focused {
+  list-style-type: none;
+  padding: 8px;
+  flex: 1;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 3px;
+
+  background: #ffffff;
+  box-shadow: 0px 2px 4px rgba(4, 4, 4, 0.18);
+  border-radius: 5px;
+  cursor: auto;
+}

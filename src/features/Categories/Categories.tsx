@@ -8,32 +8,21 @@ export const Categories = () => {
     setClassIndex(id)
   }
 
+  const categoriesNames = ['Все', 'Мясные', 'Острые', 'Сладкие', 'Вегетарианские', 'С курицей', 'Закрытые']
+
   return (
     <div className={styles.container}>
       <h1>Все пиццы</h1>
 
       <div className={styles.listOfCategories}>
-        <button onClick={() => handleClassName(0)} className={classIndex === 0 ? styles.active : styles.button}>
-          Все
-        </button>
-        <button onClick={() => handleClassName(1)} className={classIndex === 1 ? styles.active : styles.button}>
-          Мясные
-        </button>
-        <button onClick={() => handleClassName(2)} className={classIndex === 2 ? styles.active : styles.button}>
-          Острые
-        </button>
-        <button onClick={() => handleClassName(3)} className={classIndex === 3 ? styles.active : styles.button}>
-          Сладкие
-        </button>
-        <button onClick={() => handleClassName(4)} className={classIndex === 4 ? styles.active : styles.button}>
-          Вегетарианские
-        </button>
-        <button onClick={() => handleClassName(5)} className={classIndex === 5 ? styles.active : styles.button}>
-          С курицей
-        </button>
-        <button onClick={() => handleClassName(6)} className={classIndex === 6 ? styles.active : styles.button}>
-          Закрытые
-        </button>
+        {categoriesNames.map((text, id) => (
+          <button
+            key={id}
+            onClick={() => handleClassName(id)}
+            className={classIndex === id ? styles.active : styles.button}>
+            {text}
+          </button>
+        ))}
       </div>
     </div>
   )

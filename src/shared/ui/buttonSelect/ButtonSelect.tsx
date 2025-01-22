@@ -1,20 +1,21 @@
-import { useState } from 'react'
 import styles from './styles.module.scss'
 
 interface typesOfButton {
-  children: string
+  pizzaType?: number
+  children?: string
+  size?: number
+  key?: number
+  idForType?: number
+  idForSize?: number
+  isSelected: boolean
+  onClick: () => void
 }
 
-export const ButtonSelect = ({ children }: typesOfButton) => {
-  const [isFocused, setIsFocused] = useState(0)
-
-  const handleClick = (id: number) => {
-    setIsFocused(id)
-  }
-
+export const ButtonSelect = ({ children, size, onClick, isSelected }: typesOfButton) => {
   return (
-    <button onClick={() => handleClick(0)} className={isFocused === 0 ? styles.focused : styles.button}>
+    <button onClick={onClick} className={isSelected ? styles.focused : styles.button}>
       {children}
+      {size && <span>{size + ' см.'}</span>}
     </button>
   )
 }
