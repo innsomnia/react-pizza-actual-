@@ -18,10 +18,10 @@ interface typesForPizzaCard {
 }
 
 export const PizzaCard = ({ pizza }: typesForPizzaCard) => {
-  const [selectedType, setSelectedType] = useState(0)
+  const [selectedType, setSelectedType] = useState(pizza.types[0])
   const [selectedSize, setSelectedSize] = useState(pizza.sizes[0])
 
-  const { imageUrl, title, price, types, sizes } = pizza
+  const { imageUrl, title, price, types, sizes, id } = pizza
   const namesOfTypes = ['традиционное', 'тонкое']
 
   return (
@@ -30,17 +30,17 @@ export const PizzaCard = ({ pizza }: typesForPizzaCard) => {
       <h4 className={styles.title}>{title}</h4>
       <div className={styles.selector}>
         <ul>
-          {types.map((type) => (
-            <ButtonSelect isSelected={selectedType === type} key={type} onClick={() => setSelectedType(type)}>
+          {types.map((type, id) => (
+            <ButtonSelect isSelected={selectedType === type} key={id} onClick={() => setSelectedType(type)}>
               {namesOfTypes[type]}
             </ButtonSelect>
           ))}
         </ul>
         <ul>
-          {sizes.map((size) => (
+          {sizes.map((size, id) => (
             <ButtonSelect
               isSelected={selectedSize === size}
-              key={size}
+              key={id}
               size={size}
               onClick={() => setSelectedSize(size)}
             />

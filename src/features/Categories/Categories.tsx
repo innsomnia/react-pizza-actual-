@@ -12,7 +12,7 @@ export const Categories = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Все пиццы</h1>
+      <h1>{categoriesNames[classIndex]} пиццы</h1>
 
       <div className={styles.listOfCategories}>
         {categoriesNames.map((text, id) => (

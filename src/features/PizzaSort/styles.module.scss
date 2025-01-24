@@ -1,8 +1,8 @@
 .sortBox {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  width: 280px;
+  width: 300px;
   height: 55px;
   background-color: rgba(250, 250, 250, 1);
   border-radius: 15px;
@@ -11,18 +11,61 @@
   img {
     margin-right: 6px;
   }
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
 
-  span {
+  .dropdownLabel {
+    display: inline-block;
+    padding: 8px;
     font-size: 16px;
+    color: #fa5c43;
+    cursor: pointer;
   }
 
-  select {
-    font-size: 15px;
-    appearance: none;
+  .dropdownMenu {
+    width: 100%;
+    position: absolute;
+    display: none;
+    list-style: none;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    li {
+      padding: 10px 12px;
+      font-size: 14px;
+      color: #333;
+      cursor: pointer;
+
+      &:hover {
+        background: #f9f9f9;
+        color: #fa5c43;
+      }
+    }
+  }
+}
+
+.activeDropdownMenu {
+  width: 100%;
+  position: absolute;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  li {
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #333;
     cursor: pointer;
-    color: rgba(254, 95, 0, 1);
-    margin-left: 6px;
-    width: 40%;
-    height: 100%;
+
+    &:hover {
+      background: #f9f9f9;
+      color: #fa5c43;
+    }
   }
 }
