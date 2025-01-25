@@ -21,7 +21,8 @@ export const PizzaCard = ({ pizza }: typesForPizzaCard) => {
   const [selectedType, setSelectedType] = useState(pizza.types[0])
   const [selectedSize, setSelectedSize] = useState(pizza.sizes[0])
 
-  const { imageUrl, title, price, types, sizes, id } = pizza
+  const { title, imageUrl, types, sizes, price } = pizza
+
   const namesOfTypes = ['традиционное', 'тонкое']
 
   return (
