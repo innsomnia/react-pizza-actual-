@@ -11,7 +11,6 @@ interface typesOfButton {
 }
 
 export const Select = ({ children, onClick, className }: typesOfButton) => {
-  console.log(children, ' children в Select')
   return (
     <button onClick={onClick} className={className}>
       {<span>{children}</span>}

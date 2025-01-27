@@ -7,7 +7,6 @@ export const PizzaSort = () => {
   const [selectedName, setSelectedName] = useState(namesOfSort[0])
 
   const selectName = (id: number) => {
-    console.log(id, 'айди который прилетает по клику')
     setSelectedName(namesOfSort[id])
     setOpen(!open)
   }

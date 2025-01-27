@@ -45,6 +45,7 @@ export const PizzaCard = ({ title, imageUrl, types, sizes, price }: typesForPizz
           ))}
         </ul>
       </div>
+
       <div className={styles.bottomBlock}>
         <div className={styles.price}>от {price} ₽</div>
         <AddToCart />
