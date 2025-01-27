@@ -8,7 +8,7 @@ interface typesOfButton {
 export const Button = ({ img, children }: typesOfButton) => {
   return (
     <button className={styles.button}>
-      {img && <img src={img} />}
+      {img && <img src={img} alt={'image'} />}
       {children}
     </button>
   )
