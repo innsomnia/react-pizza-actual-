@@ -8,7 +8,7 @@ export const BlockOfPizzas = () => {
   return (
     <div className={styles.container}>
       {loading
-        ? pizzas.map((pizza) => <PizzaSkeleton key={pizza.id} />)
+        ? [...new Array(10)].map((_, id) => <PizzaSkeleton key={id} />)
         : pizzas.map((pizza) => (
             <PizzaCard
               key={pizza.id}
