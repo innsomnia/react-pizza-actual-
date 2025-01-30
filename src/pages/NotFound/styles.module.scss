@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  span {
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 22px;
+    color: #9f9f9f;
+  }
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 215px;
+  height: 55px;
+  background-color: none;
+  border: 1px solid #b6b6b6;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 20px;
+
+  font-size: 16px;
+  font-weight: 700;
+  color: #b6b6b6;
+
+  &:hover {
+    border: 1px solid #898989;
+    color: #898989;
+    background-color: #f4f4f4;
+  }
+}

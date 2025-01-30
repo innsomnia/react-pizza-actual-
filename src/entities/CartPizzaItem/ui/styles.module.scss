@@ -1,0 +1,65 @@
+.pizzaItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 18px;
+  width: 100%;
+}
+
+.containerForParameters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parameters {
+  display: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 10px;
+
+  p {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  span {
+    font-size: 18px;
+    font-weight: 400;
+    color: #8d8d8d;
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  button {
+    width: 32px;
+    height: 32px;
+    border: 5px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.deleteBtn {
+  width: 32px;
+  height: 32px;
+  border: 5px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}

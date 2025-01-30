@@ -1,0 +1,125 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  width: 80%;
+
+  h1 {
+    img {
+      margin-right: 10px;
+    }
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 8px;
+  font-size: 16px;
+
+  color: #b6b6b6;
+
+  &:hover {
+    color: black;
+  }
+
+  img {
+    margin-right: 10px;
+  }
+
+  &:hover {
+    background-color: rgb(249, 249, 249);
+  }
+}
+
+.cartContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+}
+
+.sumOfCart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  width: 80%;
+
+  p {
+    font-size: 22px;
+    font-weight: 400;
+
+    span {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fe5f1e;
+    }
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+  width: 75%;
+
+  .payBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 215px;
+    height: 55px;
+    background-color: #fe5f1e;
+    border-radius: 30px;
+    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+
+    &:hover {
+      background-color: #d9450a;
+    }
+  }
+
+  .backBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 215px;
+    height: 55px;
+    background-color: none;
+    border: 1px solid #b6b6b6;
+    border-radius: 30px;
+    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: 700;
+    color: #b6b6b6;
+
+    &:hover {
+      border: 1px solid #898989;
+      color: #898989;
+      background-color: #f4f4f4;
+    }
+  }
+}

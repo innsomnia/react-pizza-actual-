@@ -1,6 +1,6 @@
 import { BlockOfPizzas, Header, MenuOfSort } from '../widgets'
 
-export const HomePage = () => {
+export const Home = () => {
   return (
     <>
       <Header />

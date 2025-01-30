@@ -5,15 +5,21 @@ import styles from './styles.module.scss'
 
 import loginImg from '/forHeader/loginMan.svg'
 import cartImg from '/forHeader/btnCart.svg'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const Header = () => {
+  const navigate = useNavigate()
   return (
     <div className={styles.headerContainer}>
-      <Logo />
+      <Link to='/'>
+        <Logo />
+      </Link>
       <SearchInput />
       <div className={styles.btnGroup}>
         <Button img={loginImg}>Войти</Button>
-        <Button img={cartImg}>Корзина</Button>
+        <Button onClick={() => navigate('/cart')} img={cartImg}>
+          Корзина
+        </Button>
       </div>
     </div>
   )
