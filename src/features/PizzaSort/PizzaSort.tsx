@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
 
-interface propsTypes {
+interface PizzaSortProps {
   selectNameSort: (id: number) => void
   sortListNames: string[]
   selectedSort: number
@@ -8,7 +8,7 @@ interface propsTypes {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const PizzaSort = ({ selectNameSort, sortListNames, selectedSort, open, setOpen }: propsTypes) => {
+export const PizzaSort = ({ selectNameSort, sortListNames, selectedSort, open, setOpen }: PizzaSortProps) => {
   return (
     <div className={styles.sortBox}>
       <img src='/forSort.svg' alt='картинки нет' />

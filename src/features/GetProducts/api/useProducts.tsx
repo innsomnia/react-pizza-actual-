@@ -1,17 +1,16 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { TypeOfPizza } from '../model/types'
+import { PRODUCTS_API_URL } from '../url/config'
 
-interface propsTypes {
+interface UseProductsProps {
   category: number
   sortProperties: string
 }
 
-export const useProducts = ({ category, sortProperties }: propsTypes) => {
+export const useProducts = ({ category, sortProperties }: UseProductsProps) => {
   const [data, setData] = useState<TypeOfPizza[]>([])
   const [loading, setLoading] = useState(false)
-
-  console.log(sortProperties, 'sortProperties в useProducts')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,9 +18,7 @@ export const useProducts = ({ category, sortProperties }: propsTypes) => {
 
       try {
         const response = await axios.get(
-          `https://6793ae705eae7e5c4d8f8cb2.mockapi.io/items?${
-            category ? `category=${category}&` : ''
-          }sortBy=${sortProperties}&order=asc`
+          `${PRODUCTS_API_URL}?${category ? `category=${category}&` : ''}sortBy=${sortProperties}&order=asc`
         )
         setData(response.data)
       } catch (error) {

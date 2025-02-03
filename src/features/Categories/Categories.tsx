@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import styles from './styles.module.scss'
 
-interface categoriesContext {
+interface updateCategoryProps {
   updateCategory: (id: number) => void
 }
 
-export const Categories = ({ updateCategory }: categoriesContext) => {
+export const Categories = ({ updateCategory }: updateCategoryProps) => {
   const [classIndex, setClassIndex] = useState(0)
 
   const handleClassName = (id: number) => {
