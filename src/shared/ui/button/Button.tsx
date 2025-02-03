@@ -10,7 +10,7 @@ export const Button = ({ img, children, onClick }: typesOfButton) => {
   return (
     <button onClick={onClick} className={styles.button}>
       {img && <img src={img} alt={'image'} />}
-      {children}
+      <span>{children}</span>
     </button>
   )
 }

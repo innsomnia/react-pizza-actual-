@@ -2,8 +2,13 @@ import { PizzaCard, PizzaSkeleton } from '../../entities'
 import { useProducts } from '../../features'
 import styles from './styles.module.scss'
 
-export const BlockOfPizzas = () => {
-  const { data: pizzas, loading } = useProducts()
+interface categoryProps {
+  category: number
+  sortProperties: string
+}
+
+export const BlockOfPizzas = ({ category, sortProperties }: categoryProps) => {
+  const { data: pizzas, loading } = useProducts({ category, sortProperties })
 
   return (
     <div className={styles.container}>

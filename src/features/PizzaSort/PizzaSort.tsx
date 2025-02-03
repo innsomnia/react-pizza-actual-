@@ -1,27 +1,25 @@
-import { useState } from 'react'
 import styles from './styles.module.scss'
 
-export const PizzaSort = () => {
-  const namesOfSort = ['популярности', 'цене', 'алфавиту']
-  const [open, setOpen] = useState(false)
-  const [selectedName, setSelectedName] = useState(namesOfSort[0])
+interface propsTypes {
+  selectNameSort: (id: number) => void
+  sortListNames: string[]
+  selectedSort: number
+  open: boolean
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-  const selectName = (id: number) => {
-    setSelectedName(namesOfSort[id])
-    setOpen(!open)
-  }
-
+export const PizzaSort = ({ selectNameSort, sortListNames, selectedSort, open, setOpen }: propsTypes) => {
   return (
     <div className={styles.sortBox}>
       <img src='/forSort.svg' alt='картинки нет' />
       <div className={styles.dropdown}>
         <span>Сортировка по:</span>
-        <div onClick={() => setOpen(!open)} className={styles.dropdownLabel}>
-          {selectedName}
+        <div onClick={() => setOpen((prev) => !prev)} className={styles.dropdownLabel}>
+          {sortListNames[selectedSort]}
         </div>
         <ul className={open ? styles.activeDropdownMenu : styles.dropdownMenu}>
-          {namesOfSort.map((name, id) => (
-            <li onClick={() => selectName(id)} key={id}>
+          {sortListNames.map((name, id) => (
+            <li onClick={() => selectNameSort(id)} key={id}>
               {name}
             </li>
           ))}
