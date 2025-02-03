@@ -7,6 +7,7 @@ export const Home = () => {
   const [category, setCategory] = useState(0)
   const [selectedSort, setSelectedSort] = useState(0)
   const [open, setOpen] = useState(false)
+  const [searchValue, setSearchValue] = useState('')
 
   const sortProperties = sortListProperties[selectedSort]
 
@@ -21,7 +22,7 @@ export const Home = () => {
 
   return (
     <>
-      <Header />
+      <Header searchValue={searchValue} setSearchValue={setSearchValue} />
       <MenuOfSort
         updateCategory={updateCategory}
         sortListNames={sortListNames}
@@ -30,7 +31,7 @@ export const Home = () => {
         setOpen={setOpen}
         open={open}
       />
-      <BlockOfPizzas category={category} sortProperties={sortProperties} />
+      <BlockOfPizzas category={category} sortProperties={sortProperties} searchValue={searchValue} />
     </>
   )
 }

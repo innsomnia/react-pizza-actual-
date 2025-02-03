@@ -1,12 +1,24 @@
+import { Dispatch, SetStateAction } from 'react'
 import styles from './styles.module.scss'
 
 import searchImg from '/forHeader/searchImg.svg'
 
-export const SearchInput = () => {
+interface SearchInputProps {
+  searchValue: string
+  setSearchValue: Dispatch<SetStateAction<string>>
+}
+
+export const SearchInput = ({ searchValue, setSearchValue }: SearchInputProps) => {
+  console.log(searchValue, 'searchValue')
   return (
     <div className={styles.headerInput}>
       <img src={searchImg} alt='' />
-      <input type='text' placeholder='Поиск пиццы...' />
+      <input
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+        type='text'
+        placeholder='Поиск пиццы...'
+      />
     </div>
   )
 }
