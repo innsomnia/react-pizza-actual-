@@ -9,7 +9,6 @@ interface SearchInputProps {
 }
 
 export const SearchInput = ({ searchValue, setSearchValue }: SearchInputProps) => {
-  console.log(searchValue, 'searchValue')
   return (
     <div className={styles.headerInput}>
       <img src={searchImg} alt='' />
