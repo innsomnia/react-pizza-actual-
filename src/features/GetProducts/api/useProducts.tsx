@@ -29,18 +29,24 @@ export const useProducts = ({ category, sortProperties, page }: UseProductsProps
 
         setData(response.data)
       } catch (error) {
-        console.log(error, 'Возникшая ошибка')
+        console.warn(error, 'Возникшая ошибка')
       }
 
       setLoading(false)
     }
 
-    const localStorageData = JSON.parse(localStorage.getItem('pizzas') || '[]')
+    const getFromLocalStorage = localStorage.getItem('pizzas')
 
-    if (localStorageData.length > 0) {
-      setData(localStorageData)
-    } else {
-      fetchData()
+    try {
+      const localStorageData = getFromLocalStorage ? JSON.parse(getFromLocalStorage) : []
+
+      if (localStorageData.length > 0) {
+        setData(localStorageData)
+      } else {
+        fetchData()
+      }
+    } catch (error) {
+      console.warn('Произошла ошибка!', error)
     }
   }, [category, sortProperties])
 

@@ -3,7 +3,7 @@ import { PizzaCard, PizzaSkeleton } from '../../entities'
 import { useProducts } from '../../features'
 import { TypeOfPizza } from './../../features/GetProducts/model/types'
 import styles from './styles.module.scss'
-import { BasicPagination } from '../../shared/ui/Pagination/Pagination'
+import { BasicPagination } from '../../shared/ui/BasicPagination/BasicPagination'
 
 interface PropsForPizzaBlock {
   category: number
