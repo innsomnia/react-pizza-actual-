@@ -2,14 +2,16 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { TypeOfPizza } from '../model/types'
 import { PRODUCTS_API_URL } from '../url/config'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../app/store/Store'
 
 interface UseProductsProps {
-  category: number
   sortProperties: string
   page: number
 }
 
-export const useProducts = ({ category, sortProperties, page }: UseProductsProps) => {
+export const useProducts = ({ sortProperties, page }: UseProductsProps) => {
+  const category = useSelector((state: RootState) => state.categorySlice.categoryId)
   const [data, setData] = useState<TypeOfPizza[]>([])
   const [paginatedData, setPaginatedData] = useState<TypeOfPizza[]>([])
   const [loading, setLoading] = useState(false)

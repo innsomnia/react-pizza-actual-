@@ -3,7 +3,6 @@ import { PizzaSort } from '../../features'
 import styles from './styles.module.scss'
 
 interface propsForSorting {
-  updateCategory: (id: number) => void
   selectNameSort: (id: number) => void
   sortListNames: string[]
   selectedSort: number
@@ -11,17 +10,10 @@ interface propsForSorting {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const MenuOfSort = ({
-  updateCategory,
-  selectNameSort,
-  selectedSort,
-  sortListNames,
-  open,
-  setOpen,
-}: propsForSorting) => {
+export const MenuOfSort = ({ selectNameSort, selectedSort, sortListNames, open, setOpen }: propsForSorting) => {
   return (
     <div className={styles.categoriesBox}>
-      <Categories updateCategory={updateCategory} />
+      <Categories />
       <PizzaSort
         selectNameSort={(id) => selectNameSort(id)}
         sortListNames={sortListNames}
