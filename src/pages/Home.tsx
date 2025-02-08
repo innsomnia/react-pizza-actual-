@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { BlockOfPizzas, Header, MenuOfSort } from '../widgets'
+import { Counter } from '../widgets/Counter/Counter'
 
 export const Home = () => {
   const sortListNames = ['популярности', 'цене', 'алфавиту']
@@ -32,6 +33,7 @@ export const Home = () => {
         open={open}
       />
       <BlockOfPizzas category={category} sortProperties={sortProperties} searchValue={searchValue} />
+      <Counter />
     </>
   )
 }

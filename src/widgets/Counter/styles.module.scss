@@ -1,0 +1,31 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 215px;
+  height: 55px;
+  background-color: #fe5f1e;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  padding: 15px;
+
+  img {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    background-color: #d9450a;
+  }
+}
+
+.span {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  background-color: antiquewhite;
+  border-radius: 7px;
+  padding: 20px;
+}

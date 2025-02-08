@@ -1,4 +1,7 @@
 import { useState } from 'react'
+// import { RootState } from '../app/store/Store'
+// import { useSelector, useDispatch } from 'react-redux'
+// import { setCategoryId } from './model/SetCategorySlice'
 import styles from './styles.module.scss'
 
 interface updateCategoryProps {
