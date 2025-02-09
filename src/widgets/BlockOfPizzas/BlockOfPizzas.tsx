@@ -6,13 +6,12 @@ import styles from './styles.module.scss'
 import { BasicPagination } from '../../shared/ui/BasicPagination/BasicPagination'
 
 interface PropsForPizzaBlock {
-  sortProperties: string
   searchValue: string
 }
 
-export const BlockOfPizzas = ({ sortProperties, searchValue }: PropsForPizzaBlock) => {
+export const BlockOfPizzas = ({ searchValue }: PropsForPizzaBlock) => {
   const [page, setPage] = useState(1)
-  const { paginatedData: pizzas, data, loading } = useProducts({ sortProperties, page })
+  const { paginatedData: pizzas, data, loading } = useProducts({ page })
   const [searchedPizzas, setSearchedPizzas] = useState<TypeOfPizza[]>([])
 
   const countOfPizzas = Math.ceil(data.length / 10)

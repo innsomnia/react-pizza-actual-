@@ -4,10 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setCategoryId } from './model/SetCategorySlice'
 import styles from './styles.module.scss'
 
-// interface updateCategoryProps {
-//   updateCategory: (id: number) => void
-// }
-
 export const Categories = () => {
   const categoryId = useSelector((state: RootState) => state.categorySlice.categoryId)
   const dispatch = useDispatch()

@@ -6,12 +6,15 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../app/store/Store'
 
 interface UseProductsProps {
-  sortProperties: string
   page: number
 }
 
-export const useProducts = ({ sortProperties, page }: UseProductsProps) => {
+export const useProducts = ({ page }: UseProductsProps) => {
   const category = useSelector((state: RootState) => state.categorySlice.categoryId)
+  const sortProperties = useSelector((state: RootState) => state.sortSlice.sortListProperties)
+  const sortId = useSelector((state: RootState) => state.sortSlice.sortId)
+  const selectedProperty = sortProperties[sortId]
+
   const [data, setData] = useState<TypeOfPizza[]>([])
   const [paginatedData, setPaginatedData] = useState<TypeOfPizza[]>([])
   const [loading, setLoading] = useState(false)
@@ -24,7 +27,7 @@ export const useProducts = ({ sortProperties, page }: UseProductsProps) => {
 
       try {
         const response = await axios.get(
-          `${PRODUCTS_API_URL}?${category ? `category=${category}&` : ''}sortBy=${sortProperties}&order=asc`
+          `${PRODUCTS_API_URL}?${category ? `category=${category}&` : ''}sortBy=${selectedProperty}&order=asc`
         )
 
         localStorage.setItem('pizzas', JSON.stringify(response.data))
@@ -36,6 +39,8 @@ export const useProducts = ({ sortProperties, page }: UseProductsProps) => {
 
       setLoading(false)
     }
+
+    fetchData()
 
     const getFromLocalStorage = localStorage.getItem('pizzas')
 
@@ -50,7 +55,7 @@ export const useProducts = ({ sortProperties, page }: UseProductsProps) => {
     } catch (error) {
       console.warn('Произошла ошибка!', error)
     }
-  }, [category, sortProperties])
+  }, [category, selectedProperty, sortId])
 
   useEffect(() => {
     const firstIndex = (page - 1) * dataLimit
