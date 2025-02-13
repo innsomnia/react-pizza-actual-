@@ -8,9 +8,16 @@ export const AddToCart = () => {
     setPizzaCount((prev) => prev + 1)
   }
   return (
-    <button onClick={handleCountClick} className={styles.add}>
-      Добавить
-      <span>{pizzaCount}</span>
-    </button>
+    <div>
+      {pizzaCount > 0 ? (
+        <button onClick={() => setPizzaCount((prev) => prev - 1)} className={styles.decrement}>
+          -
+        </button>
+      ) : null}
+      <button onClick={handleCountClick} className={styles.add}>
+        Добавить
+        <span>{pizzaCount}</span>
+      </button>
+    </div>
   )
 }

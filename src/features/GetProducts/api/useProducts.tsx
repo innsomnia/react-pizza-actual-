@@ -4,12 +4,14 @@ import { TypeOfPizza } from '../model/types'
 import { PRODUCTS_API_URL } from '../url/config'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../app/store/Store'
+import { useDebounceSearch } from '../../../shared/hooks/useDebounceSearch'
 
 interface UseProductsProps {
   page: number
+  searchValue: string
 }
 
-export const useProducts = ({ page }: UseProductsProps) => {
+export const useProducts = ({ page, searchValue }: UseProductsProps) => {
   const category = useSelector((state: RootState) => state.categorySlice.categoryId)
   const sortProperties = useSelector((state: RootState) => state.sortSlice.sortListProperties)
   const sortId = useSelector((state: RootState) => state.sortSlice.sortId)
@@ -17,7 +19,10 @@ export const useProducts = ({ page }: UseProductsProps) => {
 
   const [data, setData] = useState<TypeOfPizza[]>([])
   const [paginatedData, setPaginatedData] = useState<TypeOfPizza[]>([])
+  const [searchedPizzas, setSearchedPizzas] = useState<TypeOfPizza[]>([])
   const [loading, setLoading] = useState(false)
+
+  useDebounceSearch({ data, page, setSearchedPizzas, searchValue })
 
   const dataLimit = 10
 
@@ -61,8 +66,12 @@ export const useProducts = ({ page }: UseProductsProps) => {
     const firstIndex = (page - 1) * dataLimit
     const lastIndex = firstIndex + dataLimit
 
-    setPaginatedData(data.slice(firstIndex, lastIndex))
-  }, [page, data])
+    if (searchedPizzas.length === 0) {
+      setPaginatedData(data.slice(firstIndex, lastIndex))
+    } else {
+      setPaginatedData(searchedPizzas.slice(firstIndex, lastIndex))
+    }
+  }, [page, data, searchValue, searchedPizzas])
 
-  return { paginatedData, data, loading }
+  return { paginatedData, data, searchedPizzas, loading }
 }
