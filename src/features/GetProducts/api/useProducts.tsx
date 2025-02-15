@@ -22,7 +22,7 @@ export const useProducts = ({ page, searchValue }: UseProductsProps) => {
   const [searchedPizzas, setSearchedPizzas] = useState<TypeOfPizza[]>([])
   const [loading, setLoading] = useState(false)
 
-  useDebounceSearch({ data, page, setSearchedPizzas, searchValue })
+  useDebounceSearch({ data, setSearchedPizzas, searchValue })
 
   const dataLimit = 10
 

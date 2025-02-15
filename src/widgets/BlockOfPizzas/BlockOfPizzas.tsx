@@ -26,12 +26,14 @@ export const BlockOfPizzas = ({ searchValue }: PropsForPizzaBlock) => {
           ? [...new Array(10)].map((_, id) => <PizzaSkeleton key={id} />)
           : pizzas.map((pizza) => (
               <PizzaCard
+                id={pizza.id}
                 key={pizza.id}
                 title={pizza.title}
                 imageUrl={pizza.imageUrl}
                 types={pizza.types}
                 sizes={pizza.sizes}
                 price={pizza.price}
+                pizzas={pizzas}
               />
             ))}
       </div>

@@ -3,17 +3,20 @@ import classes from '../../../shared/ui/Select/styles.module.scss'
 import { AddToCart } from '../../../features'
 import { useState } from 'react'
 import { Select } from '../../../shared/ui'
+import { TypeOfPizza } from '../../../features/GetProducts/model/types'
 
 interface typesForPizzaCard {
+  id: number
   key: number
   imageUrl: string
   title: string
   types: number[]
   sizes: number[]
   price: number
+  pizzas: TypeOfPizza[]
 }
 
-export const PizzaCard = ({ title, imageUrl, types, sizes, price }: typesForPizzaCard) => {
+export const PizzaCard = ({ id, title, imageUrl, types, sizes, price, pizzas }: typesForPizzaCard) => {
   const [selectedType, setSelectedType] = useState(types[0])
   const [selectedSize, setSelectedSize] = useState(sizes[0])
 
@@ -48,7 +51,15 @@ export const PizzaCard = ({ title, imageUrl, types, sizes, price }: typesForPizz
 
       <div className={styles.bottomBlock}>
         <div className={styles.price}>от {price} ₽</div>
-        <AddToCart />
+        <AddToCart
+          id={id}
+          title={title}
+          imageUrl={imageUrl}
+          types={types}
+          sizes={sizes}
+          price={price}
+          pizzas={pizzas}
+        />
       </div>
     </div>
   )

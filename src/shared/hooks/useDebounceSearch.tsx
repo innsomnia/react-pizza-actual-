@@ -3,12 +3,11 @@ import { TypeOfPizza } from '../../features/GetProducts/model/types'
 
 interface DebounceProps {
   data: TypeOfPizza[]
-  page: number
   setSearchedPizzas: (filtered: TypeOfPizza[]) => void
   searchValue: string
 }
 
-export const useDebounceSearch = ({ data, setSearchedPizzas, searchValue, page }: DebounceProps) => {
+export const useDebounceSearch = ({ data, setSearchedPizzas, searchValue }: DebounceProps) => {
   const [timer, setTimer] = useState<number | null>(null)
 
   useEffect(() => {
@@ -25,5 +24,5 @@ export const useDebounceSearch = ({ data, setSearchedPizzas, searchValue, page }
     setTimer(newTimer)
 
     return () => clearTimeout(newTimer)
-  }, [searchValue, data, page])
+  }, [searchValue, data])
 }
