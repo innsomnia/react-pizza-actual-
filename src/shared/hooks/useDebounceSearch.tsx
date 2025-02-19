@@ -1,28 +1,21 @@
-import { useState, useEffect } from 'react'
-import { TypeOfPizza } from '../../features/GetProducts/model/types'
+import { useEffect, useState } from 'react'
 
-interface DebounceProps {
-  data: TypeOfPizza[]
-  setSearchedPizzas: (filtered: TypeOfPizza[]) => void
-  searchValue: string
-}
+export const useDebounceSearch = <T,>(searchValue: T, delay: number) => {
+  const [debounceValue, setDebounceValue] = useState<T>(searchValue)
 
-export const useDebounceSearch = ({ data, setSearchedPizzas, searchValue }: DebounceProps) => {
-  const [timer, setTimer] = useState<number | null>(null)
+  console.log(debounceValue, 'debounceValue в Debounce')
+
+  console.log('debounceValue', debounceValue)
 
   useEffect(() => {
-    if (timer) clearTimeout(timer)
+    const handler = setTimeout(() => {
+      setDebounceValue(searchValue)
+    }, delay ?? 2000)
 
-    const newTimer = setTimeout(() => {
-      const filtered = data.filter((pizza) =>
-        pizza.title.toLowerCase().trim().includes(searchValue.toLowerCase().trim())
-      )
+    return () => {
+      clearTimeout(handler)
+    }
+  }, [searchValue, delay])
 
-      setSearchedPizzas(filtered)
-    }, 2000)
-
-    setTimer(newTimer)
-
-    return () => clearTimeout(newTimer)
-  }, [searchValue, data])
+  return debounceValue
 }

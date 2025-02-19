@@ -5,7 +5,7 @@ import { CartPizzaItem } from '../../../entities/CartPizzaItem/ui/CartPizzaItem'
 import { useNavigate } from 'react-router-dom'
 import { RootState } from '../../../app/store/Store'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCartPizzasState } from '../../../features/AddToCart/model/setCartItem'
+import { setCartPizzasState } from '../../../features/AddToCart/model/setCartSlice'
 import { removePizzaById } from '../../../shared/lib/cart/removePizzaById'
 
 export const CartBlock = () => {
@@ -17,6 +17,7 @@ export const CartBlock = () => {
 
   const clearingCart = () => {
     dispatch(setCartPizzasState([]))
+    localStorage.clear()
   }
 
   const removeOnePizza = (id: number) => {

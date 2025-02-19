@@ -22,9 +22,9 @@ export const useProducts = ({ page, searchValue }: UseProductsProps) => {
   const [searchedPizzas, setSearchedPizzas] = useState<TypeOfPizza[]>([])
   const [loading, setLoading] = useState(false)
 
-  useDebounceSearch({ data, setSearchedPizzas, searchValue })
-
   const dataLimit = 10
+
+  const debouncedSearch = useDebounceSearch(searchValue, 2000)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,12 +66,17 @@ export const useProducts = ({ page, searchValue }: UseProductsProps) => {
     const firstIndex = (page - 1) * dataLimit
     const lastIndex = firstIndex + dataLimit
 
-    if (searchedPizzas.length === 0) {
-      setPaginatedData(data.slice(firstIndex, lastIndex))
+    if (debouncedSearch) {
+      const filtered = data.filter((pizza) =>
+        pizza.title.toLowerCase().trim().includes(searchValue.toLowerCase().trim())
+      )
+
+      setSearchedPizzas(filtered)
+      setPaginatedData(filtered.slice(firstIndex, lastIndex))
     } else {
-      setPaginatedData(searchedPizzas.slice(firstIndex, lastIndex))
+      setPaginatedData(data.slice(firstIndex, lastIndex))
     }
-  }, [page, data, searchValue, searchedPizzas])
+  }, [page, data, searchValue, debouncedSearch])
 
   return { paginatedData, data, searchedPizzas, loading }
 }
