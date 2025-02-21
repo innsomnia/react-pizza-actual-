@@ -67,9 +67,9 @@ export const useProducts = ({ page, searchValue }: UseProductsProps) => {
     const lastIndex = firstIndex + dataLimit
 
     if (debouncedSearch) {
-      const filtered = data.filter((pizza) =>
-        pizza.title.toLowerCase().trim().includes(searchValue.toLowerCase().trim())
-      )
+      const searValue = searchValue.toLowerCase().trim()
+
+      const filtered = data.filter((pizza) => pizza.title.toLowerCase().trim().includes(searValue))
 
       setSearchedPizzas(filtered)
       setPaginatedData(filtered.slice(firstIndex, lastIndex))

@@ -2,6 +2,8 @@ import styles from './styles.module.scss'
 import minusBtn from '../../../shared/assets/ButtonImgs/minusBtn.svg'
 import plusBtn from '../../../shared/assets/ButtonImgs/plusBtn.svg'
 import deleteBtn from '../../../shared/assets/ButtonImgs/deleteBtn.svg'
+import { RootState } from '../../../app/store/Store'
+import { useSelector } from 'react-redux'
 
 interface CartPizzaItem {
   id: number
@@ -15,6 +17,8 @@ interface CartPizzaItem {
 }
 
 export const CartPizzaItem = ({ id, title, imageUrl, price, removeOnePizza }: CartPizzaItem) => {
+  const pizzaCount = useSelector((state: RootState) => state.cartPizzasSlice.pizzaCountById)
+
   return (
     <div className={styles.pizzaItem}>
       <div className={styles.containerForParameters}>
@@ -29,7 +33,7 @@ export const CartPizzaItem = ({ id, title, imageUrl, price, removeOnePizza }: Ca
         <button>
           <img src={minusBtn} alt='image' />
         </button>
-        <span> 2 </span>
+        <span> {pizzaCount[id]} </span>
         <button>
           <img src={plusBtn} alt='image' />
         </button>
