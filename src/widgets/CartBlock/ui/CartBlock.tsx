@@ -5,8 +5,7 @@ import { CartPizzaItem } from '../../../entities/CartPizzaItem/ui/CartPizzaItem'
 import { useNavigate } from 'react-router-dom'
 import { RootState } from '../../../app/store/Store'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearingPizzaCount, setCartPizzasState } from '../../../features/AddToCart/model/setCartSlice'
-import { removePizzaById } from '../../../shared/lib/cart/removePizzaById'
+import { clearingAllPizzasCount, pizzaRemove, setCartPizzasState } from '../../../features/AddToCart/model/setCartSlice'
 
 export const CartBlock = () => {
   const cartState = useSelector((state: RootState) => state.cartPizzasSlice)
@@ -17,13 +16,12 @@ export const CartBlock = () => {
 
   const clearingCart = () => {
     dispatch(setCartPizzasState([]))
-    dispatch(clearingPizzaCount())
+    dispatch(clearingAllPizzasCount())
     localStorage.clear()
   }
 
   const removeOnePizza = (id: number) => {
-    const removedPizza = removePizzaById(id, cartState.pizzas)
-    dispatch(setCartPizzasState(removedPizza))
+    dispatch(pizzaRemove(id))
   }
 
   return (

@@ -25,11 +25,28 @@ export const cartPizzasSlice = createSlice({
     pizzaRemove: (state, action: PayloadAction<number>) => {
       const id = action.payload
 
-      if ((state.pizzaCountById[id] || 0) > 0) {
-        state.pizzaCountById[id] = state.pizzaCountById[id] -= 1
+      if (state.pizzaCountById[id]) {
+        state.pizzaCountById[id] -= 1
+
+        if (state.pizzaCountById[id] === 0) {
+          delete state.pizzaCountById[id]
+          state.pizzas = state.pizzas.filter((pizza) => pizza.id !== id)
+        }
       }
     },
-    clearingPizzaCount: (state) => {
+    deletePizzaItem: (state, action: PayloadAction<number>) => {
+      const id = action.payload
+
+      if (state.pizzaCountById[id] > 0) {
+        state.pizzaCountById[id] = 0
+
+        if (state.pizzaCountById[id] === 0) {
+          delete state.pizzaCountById[id]
+          state.pizzas = state.pizzas.filter((pizza) => pizza.id !== id)
+        }
+      }
+    },
+    clearingAllPizzasCount: (state) => {
       if (Object.keys(state.pizzaCountById).length === 0) {
         return
       } else {
@@ -39,6 +56,7 @@ export const cartPizzasSlice = createSlice({
   },
 })
 
-export const { setCartPizzasState, pizzaAdd, pizzaRemove, clearingPizzaCount } = cartPizzasSlice.actions
+export const { setCartPizzasState, pizzaAdd, pizzaRemove, clearingAllPizzasCount, deletePizzaItem } =
+  cartPizzasSlice.actions
 
 export default cartPizzasSlice.reducer

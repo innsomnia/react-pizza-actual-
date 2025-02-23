@@ -1,10 +1,8 @@
-// import { useEffect } from 'react'
 import styles from './styles.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../app/store/Store'
-import { clearingPizzaCount, pizzaAdd, pizzaRemove, setCartPizzasState } from './model/setCartSlice'
+import { pizzaAdd, pizzaRemove, setCartPizzasState } from './model/setCartSlice'
 import { TypeOfPizza } from '../GetProducts/model/types'
-import { removePizzaById } from '../../shared/lib/cart/removePizzaById'
 
 interface AddToCartProps {
   id: number
@@ -37,10 +35,7 @@ export const AddToCart = ({ id, pizzas }: AddToCartProps) => {
   const countBeforeAdding = 0
 
   const handleRemove = (id: number) => {
-    const filteredCart = removePizzaById(id, cartState.pizzas)
-    dispatch(setCartPizzasState(filteredCart))
     dispatch(pizzaRemove(id))
-    dispatch(clearingPizzaCount())
   }
 
   return (

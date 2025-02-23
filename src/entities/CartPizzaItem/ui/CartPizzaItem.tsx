@@ -3,7 +3,8 @@ import minusBtn from '../../../shared/assets/ButtonImgs/minusBtn.svg'
 import plusBtn from '../../../shared/assets/ButtonImgs/plusBtn.svg'
 import deleteBtn from '../../../shared/assets/ButtonImgs/deleteBtn.svg'
 import { RootState } from '../../../app/store/Store'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { deletePizzaItem, pizzaAdd } from '../../../features/AddToCart/model/setCartSlice'
 
 interface CartPizzaItem {
   id: number
@@ -18,6 +19,7 @@ interface CartPizzaItem {
 
 export const CartPizzaItem = ({ id, title, imageUrl, price, removeOnePizza }: CartPizzaItem) => {
   const pizzaCount = useSelector((state: RootState) => state.cartPizzasSlice.pizzaCountById)
+  const dispatch = useDispatch()
 
   return (
     <div className={styles.pizzaItem}>
@@ -30,16 +32,16 @@ export const CartPizzaItem = ({ id, title, imageUrl, price, removeOnePizza }: Ca
       </div>
 
       <div className={styles.buttonGroup}>
-        <button>
+        <button onClick={() => removeOnePizza(id)}>
           <img src={minusBtn} alt='image' />
         </button>
         <span> {pizzaCount[id]} </span>
-        <button>
+        <button onClick={() => dispatch(pizzaAdd(id))}>
           <img src={plusBtn} alt='image' />
         </button>
       </div>
       <span className={styles.price}> {price} ₽ </span>
-      <button onClick={() => removeOnePizza(id)} className={styles.deleteBtn}>
+      <button onClick={() => dispatch(deletePizzaItem(id))} className={styles.deleteBtn}>
         <img src={deleteBtn} alt='image' />
       </button>
     </div>
